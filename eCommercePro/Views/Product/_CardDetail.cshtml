@@ -1,0 +1,93 @@
+﻿@model List<CartLine>
+@{
+	int index = 0;
+}
+@using eCommercePro.Models.ViewData;
+
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="text-center">Ürün</th>
+				<th class="text-center">Fiyat</th>
+				<th class="text-center">Adet</th>
+				<th class="text-center">Toplam Fiyat </th>
+				<th>&nbsp; </th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				index++;
+				<tr>
+					<td>
+						<div class="media">
+							<div class="media-left"> <a href="#."> <img class="img-responsive" src="~/Content/product_image/@item.Image"> </a> </div>
+							<div class="media-body">
+								<p>
+									@item.Marka / @item.Model <br />
+									<span class="badge-danger">@item.Urun</span>
+								</p>
+							</div>
+						</div>
+					</td>
+					<td class="text-center padding-top-60">@item.Price.ToString("n") ₺</td>
+					<td class="text-center">
+						<div class="quinty padding-top-20">
+							<input type="number" value="@item.Quantity" id="quantity@(index)" onkeyup="RevizeFiyat('@index','@item.ProductId','@item.Price');">
+						</div>
+					</td>
+					<td class="text-center padding-top-60"><label id="toplamFiyat">@item.TotalPrice.ToString("n") ₺</label></td>
+					<td class="text-center padding-top-60"><a href="javascript:DeleteCard('@item.ProductId');" class="remove"><i class="fa fa-close"></i></a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<!-- Promotion -->
+	<div class="promo">
+		<div class="coupen">
+			<label>
+				Promosyon Kodu
+				<input type="text" placeholder="Buraya Giriniz">
+				<button type="submit"><i class="fa fa-arrow-circle-right"></i></button>
+			</label>
+		</div>
+
+		<!-- Grand total -->
+		<div class="g-totel">
+			<h5>Genel Toplam: <span>@(Model.Select(w => w.TotalPrice).Sum().ToString("n")) ₺</span></h5>
+		</div>
+	</div>
+
+	<!-- Button -->
+	<div class="pro-btn"> <a href="/" class="btn-round btn-light">Alışverişe Devam</a> <a href="#." class="btn-round">Ödemeye Geç</a> </div>
+</div>
+
+
+<script>
+	function RevizeFiyat(inx, productId) {
+		var quantity = $('#quantity' + inx).val();
+		var type = '@((int)eCommercePro.Models.Enum.EnumHelper.SepetEklemeTip.sepette_guncelle)';
+		$.post('@(Url.Action("AddCardProduct", "Product"))', { productId: productId, quantity: quantity, type : type }, function (result) {
+			if (result) {
+				$.post('@Url.Action("_GetCartList", "Product")', function (result) {
+					$('#Detay').html(result);
+					GetirUstSepet();
+		      	});
+			}
+		});
+	}
+
+
+	function DeleteCard(productId) {
+		$.post('@(Url.Action("DeleteCardProduct", "Product"))', { productId: productId }, function (result) {
+			if (result) {
+				$.post('@Url.Action("_GetCartList", "Product")', function (result) {
+					$('#Detay').html(result);
+					GetirUstSepet();
+			});
+			}
+		});
+	}
+</script>

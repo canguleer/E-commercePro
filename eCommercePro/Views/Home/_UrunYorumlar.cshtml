@@ -1,0 +1,23 @@
+﻿@model List<eCommercePro.Models.DAL.Product_Comments>
+@{
+    int index = 0;
+
+}
+
+@foreach (var item in Model)
+{
+    var customer = item.User.Customer.FirstOrDefault();
+    index++;
+    <div class="comments">
+        <h6 class="margin-0">Yorum sıra (@index)</h6>
+        <ul>
+            <!-- Comments -->
+            <li class="media">               
+                <div class="media-body padding-left-20">
+                    <h6>@customer.name @customer.lastName<span><i class="fa fa-bookmark-o"></i> @item.datetime.ToLongDateString() </span> </h6>
+                    <p>@item.note </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+}

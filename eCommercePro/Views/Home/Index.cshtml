@@ -1,0 +1,825 @@
+﻿@model List<Product>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_LCommerce.cshtml";
+	ETicaretEntities db = new ETicaretEntities();
+	var modelData = (List<Model>)ViewBag.Models;
+	int index = 0;
+}
+@using eCommercePro.Models.DAL;
+
+
+<section class="slid-sec">
+	<div class="container">
+		<div class="container-fluid">
+			<div class="row">
+
+				<!-- Main Slider  -->
+				<div class="col-md-9 no-padding">
+
+					<!-- Main Slider Start -->
+					<div class="tp-banner-container">
+						<div class="tp-banner">
+							<ul>
+
+								<!-- SLIDE  -->
+								<li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+									<!-- MAIN IMAGE -->
+									<img src="~/Content/images/slider-img-1.jpg" alt="slider" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+									<!-- LAYER NR. 1 -->
+									<div class="tp-caption sfl tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="-110"
+										 data-speed="800"
+										 data-start="800"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.4"
+										 data-endspeed="300"
+										 style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">High Quality VR Glasses</div>
+
+									<!-- LAYER NR. 2 -->
+									<div class="tp-caption sfr tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="-60"
+										 data-speed="800"
+										 data-start="1000"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">3D Daydream View</div>
+
+									<!-- LAYER NR. 3 -->
+									<div class="tp-caption sfl tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="10"
+										 data-speed="800"
+										 data-start="1200"
+										 data-easing="Power3.easeInOut"
+										 m3re
+										 data-splitin="none"
+										 data-splitout="none"
+										 data-elementdelay="0.1"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Starting at</div>
+
+									<!-- LAYER NR. 1 -->
+									<div class="tp-caption sfr tp-resizeme"
+										 data-x="left" data-hoffset="210"
+										 data-y="center" data-voffset="5"
+										 data-speed="800"
+										 data-start="1300"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.4"
+										 data-endspeed="300"
+										 style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$49.99</div>
+
+									<!-- LAYER NR. 4 -->
+									<div class="tp-caption lfb tp-resizeme scroll"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="80"
+										 data-speed="800"
+										 data-start="1300"
+										 data-easing="Power3.easeInOut"
+										 data-elementdelay="0.1"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 data-scrolloffset="0"
+										 style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a></div>
+								</li>
+
+								<!-- SLIDE  -->
+								<li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+									<!-- MAIN IMAGE -->
+									<img src="~/Content/images/slider-img-2.jpg" alt="slider" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+									<!-- LAYER NR. 1 -->
+									<div class="tp-caption sfl tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="-110"
+										 data-speed="800"
+										 data-start="800"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.4"
+										 data-endspeed="300"
+										 style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">No restocking fee ($35 savings)</div>
+
+									<!-- LAYER NR. 2 -->
+									<div class="tp-caption sfr tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="-60"
+										 data-speed="800"
+										 data-start="1000"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">M75 Sport Watch</div>
+
+									<!-- LAYER NR. 3 -->
+									<div class="tp-caption sfl tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="10"
+										 data-speed="800"
+										 data-start="1200"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="none"
+										 data-splitout="none"
+										 data-elementdelay="0.1"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Now Only</div>
+
+									<!-- LAYER NR. 1 -->
+									<div class="tp-caption sfr tp-resizeme"
+										 data-x="left" data-hoffset="210"
+										 data-y="center" data-voffset="5"
+										 data-speed="800"
+										 data-start="1300"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.4"
+										 data-endspeed="300"
+										 style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$320.99</div>
+
+									<!-- LAYER NR. 4 -->
+									<div class="tp-caption lfb tp-resizeme scroll"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="80"
+										 data-speed="800"
+										 data-start="1300"
+										 data-easing="Power3.easeInOut"
+										 data-elementdelay="0.1"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 data-scrolloffset="0"
+										 style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a></div>
+								</li>
+
+								<!-- SLIDE  -->
+								<li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+									<!-- MAIN IMAGE -->
+									<img src="~/Content/images/slider-img-3.jpg" alt="slider" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+									<!-- LAYER NR. 1 -->
+									<div class="tp-caption sfl tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="-110"
+										 data-speed="800"
+										 data-start="800"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.4"
+										 data-endspeed="300"
+										 style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">Get Free Bluetooth when buy</div>
+
+									<!-- LAYER NR. 2 -->
+									<div class="tp-caption sfr tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="-60"
+										 data-speed="800"
+										 data-start="1000"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">Flat SmartWatch</div>
+
+									<!-- LAYER NR. 3 -->
+									<div class="tp-caption sfl tp-resizeme"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="0"
+										 data-speed="800"
+										 data-start="1200"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="none"
+										 data-splitout="none"
+										 data-elementdelay="0.1"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Combo Only:</div>
+
+									<!-- LAYER NR. 1 -->
+									<div class="tp-caption sfr tp-resizeme"
+										 data-x="left" data-hoffset="240"
+										 data-y="center" data-voffset=" -5"
+										 data-speed="800"
+										 data-start="1300"
+										 data-easing="Power3.easeInOut"
+										 data-splitin="chars"
+										 data-splitout="none"
+										 data-elementdelay="0.03"
+										 data-endelementdelay="0.4"
+										 data-endspeed="300"
+										 style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$590.00</div>
+
+									<!-- LAYER NR. 4 -->
+									<div class="tp-caption lfb tp-resizeme scroll"
+										 data-x="left" data-hoffset="60"
+										 data-y="center" data-voffset="80"
+										 data-speed="800"
+										 data-start="1300"
+										 data-easing="Power3.easeInOut"
+										 data-elementdelay="0.1"
+										 data-endelementdelay="0.1"
+										 data-endspeed="300"
+										 data-scrolloffset="0"
+										 style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Main Slider  -->
+				<div class="col-md-3 no-padding">
+
+					<!-- New line required  -->
+					<div class="product">
+						<div class="like-bnr">
+							<div class="position-center-center">
+								<h5>Yeni nesil telefon!</h5>
+								<h4>İphone X</h4>
+								<span class="price">8999.90 TL</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Weekly Slaes  -->
+					<div class="week-sale-bnr">
+						<h4>Haftalık <span>İndirim!</span></h4>
+						<p>
+							Sepetini doldurmaya başla!
+							Online alışverişte % 50'ye varan indirim
+						</p>
+						<a href="@Url.Action("Product4","Home")" class="btn-round" style="margin-top:30px;">Alışverişe Başla</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Content -->
+<div id="content">
+
+	<!-- Shipping Info -->
+	<section class="shipping-info">
+		<div class="container">
+			<ul>
+
+				<!-- Free Shipping -->
+				<li>
+					<div class="media-left"> <i class="fas fa-truck"></i> </div>
+					<div class="media-body">
+						<h5>Ücretsiz Taşıma Desteği</h5>
+						<span>100 tl ve üzeri alışverişlerinizde ücretsiz kargo!</span>
+					</div>
+				</li>
+				<!-- Money Return -->
+				<li>
+					<div class="media-left"> <i class="fas fa-money-bill-alt"></i> </div>
+					<div class="media-body">
+						<h5>Para iade desteği</h5>
+						<span>30 güne kadar paranızı iade ediyoruz!</span>
+					</div>
+				</li>
+				<!-- Support 24/7 -->
+				<li>
+					<div class="media-left"> <i class="fas fa-phone"></i> </div>
+					<div class="media-body">
+						<h5>7/24 ulaşım desteği</h5>
+						<span>TEL: (212) 613 97 04</span>
+					</div>
+				</li>
+				<!-- Safe Payment -->
+				<li>
+					<div class="media-left"> <i class="fas fa-piggy-bank"></i> </div>
+					<div class="media-body">
+						<h5>Güvenli ödeme desteği</h5>
+						<span>Online güvenlik sistemiyle ödeme imkanı!</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- tab Section -->
+	<section class="featur-tabs padding-top-60 padding-bottom-60">
+		<div class="container">
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs nav-pills margin-bottom-40" role="tablist">
+				<li role="presentation" class="active"><a href="#featur" aria-controls="featur" role="tab" data-toggle="tab">Son Eklenenler</a></li>
+				<li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">Çok Satanlar</a></li>
+				<li role="presentation"><a href="#on-sal" aria-controls="on-sal" role="tab" data-toggle="tab">En çok Ziyaret Edilenler</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Featured -->
+				<div role="tabpanel" class="tab-pane active fade in" id="featur">
+					<!-- Items Slider -->
+					<div class="item-slide-5 with-nav">
+
+
+						<!-- Product -->
+						@foreach (var item in Model.Take(10))
+						{
+							<div class="product">
+								<article>
+									<a href="@Url.Action("Product_Detail","Product", new { id = item.id})"><img class="img-responsive" src="~/Content/product_image/@item.image" alt="" style="width:184px; height:184px"></a>
+									<!-- Content -->
+									<span class="tag">@item.Brand_Model.Model.modelName</span> <a href="#." class="tittle">@item.productnName</a>
+									<!-- Reviews -->
+									<p class="rev"></p>
+									<div class="price">@item.Price.ToString("n") ₺</div>
+
+									<a href="javascript:SepeteEkle('@item.id');" class="cart-btn" value=""> <i class="icon-basket-loaded"></i> </a>
+                                   
+									<a href="#" class="cart-btn" value="" onclick="GetirUrunYorum('@item.id');"  data-toggle="modal" data-target="#ModalPopup"> <i class="fas fa-comments"></i> </a>
+								</article>
+							</div>
+						}
+
+					</div>
+				</div>
+
+				<!-- Special -->
+				<div role="tabpanel" class="tab-pane fade" id="special">
+					<!-- Items Slider -->
+					<div class="item-col-5">
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-11.jpg" alt="">
+								<!-- Content -->
+								<span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00 </div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-9.jpg" alt=""> <span class="sale-tag">-25%</span>
+
+								<!-- Content -->
+								<span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00 <span>$200.00</span></div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-8.jpg" alt="">
+								<!-- Content -->
+								<span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00</div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-7.jpg" alt=""> <span class="new-tag">New</span>
+
+								<!-- Content -->
+								<span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00</div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-6.jpg" alt="">
+								<!-- Content -->
+								<span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00</div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+					</div>
+				</div>
+
+				<!-- on sale -->
+				<div role="tabpanel" class="tab-pane fade" id="on-sal">
+					<!-- Items Slider -->
+					<div class="item-col-5">
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-3.jpg" alt="">
+								<!-- Content -->
+								<span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00 </div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-1.jpg" alt=""> <span class="sale-tag">-25%</span>
+
+								<!-- Content -->
+								<span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00 <span>$200.00</span></div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-2.jpg" alt="">
+								<!-- Content -->
+								<span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00</div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-5.jpg" alt=""> <span class="new-tag">New</span>
+
+								<!-- Content -->
+								<span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00</div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+
+						<!-- Product -->
+						<div class="product">
+							<article>
+								<img class="img-responsive" src="~/Content/images/item-img-1-4.jpg" alt="">
+								<!-- Content -->
+								<span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+								<!-- Reviews -->
+								<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+								<div class="price">$350.00</div>
+								<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Top Selling Week -->
+	<section class="light-gry-bg padding-top-60 padding-bottom-30">
+		<div class="container">
+
+			<!-- heading -->
+			<div class="heading">
+				<h2>Bu Hafta En Çok Satılanlar</h2>
+				<hr>
+			</div>
+
+			<!-- Items -->
+			<div class="item-col-5">
+
+				<!-- Product -->
+				<div class="product col-2x">
+					<div class="like-bnr">
+						<div class="position-center-center">
+							<h5>Akıllı Saat 2.0</h5>
+							<p>
+								Uzay Grisi Alüminyum Kasa
+								ile siyah Spor Bandı <span>38mm | 42mm</span>
+							</p>
+							<a href="#." class="btn-round">Detayı Görüntüle</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-6.jpg" alt=""> <span class="sale-tag">-25%</span>
+
+						<!-- Content -->
+						<span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00 <span>$200.00</span></div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-7.jpg" alt="">
+						<!-- Content -->
+						<span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00</div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-8.jpg" alt=""> <span class="new-tag">New</span>
+
+						<!-- Content -->
+						<span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00</div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-9.jpg" alt="">
+						<!-- Content -->
+						<span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00</div>
+						<a href="#" class="cart-btn"><i class="icon-basket-loaded"></i></a>
+
+                        
+					</article>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-10.jpg" alt="">
+						<!-- Content -->
+						<span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00</div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-11.jpg" alt=""> <span class="new-tag">New</span>
+
+						<!-- Content -->
+						<span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00</div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-12.jpg" alt="">
+						<!-- Content -->
+						<span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00</div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-13.jpg" alt="">
+						<!-- Content -->
+						<span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00</div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main Tabs Sec -->
+	<section class="main-tabs-sec padding-top-60 padding-bottom-0">
+		<div class="container">
+			<ul class="nav margin-bottom-40" role="tablist">
+
+				@foreach (var item in modelData)
+				{
+					index++;
+					<li role="presentation" @(index == 1 ? "class=active" : "")> <a href="@item.id" aria-controls="featur" role="tab" data-toggle="tab"> @*<i class="fas fa-desktop"></i>*@ @item.modelName<span>@item.Brand_Model.Select(w => w.Product.Count).FirstOrDefault() Ürün</span></a></li>
+				}
+
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+
+				@foreach (var item in modelData)
+				{
+					List<Product> modelUrun = new List<Product>();
+					try
+					{
+						modelUrun = item.Brand_Model.Select(w => w.Product.First()).ToList();
+					}
+					catch
+					{
+					}
+					<div role="tabpanel" class="tab-pane active fade in" id="">
+
+						<div class="item-slide-5 with-bullet no-nav">
+							@if (modelUrun.Count > 0)
+							{
+								foreach (var itemUrunlar in modelUrun)
+								{
+									<div class="product">
+										<article>
+											<img class="img-responsive" src="~/Content/product_image/@itemUrunlar.image" alt="">
+											<!-- Content -->
+											<span class="tag">@itemUrunlar.productnName</span> <a href="#." class="tittle">@itemUrunlar.ProductDetail.Select(w => w.title).FirstOrDefault()</a>
+											<!-- Reviews -->
+											<p class="rev"></p>
+											<div class="price">@itemUrunlar.Price.ToString("n") TL </div>
+											<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+										</article>
+									</div>
+								}
+							}
+						</div>
+					</div>
+
+				}
+
+
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Top Selling Week -->
+	<section class="padding-top-60 padding-bottom-60">
+		<div class="container">
+
+			<!-- heading -->
+			<div class="heading">
+				<h2>Blog Sayfamızdan</h2>
+				<hr>
+			</div>
+			<div id="blog-slide" class="with-nav">
+
+				<!-- Blog Post -->
+				<div class="blog-post">
+					<article>
+						<img class="img-responsive" src="~/Content/images/blog-img-1.jpg" alt=""> <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span>
+
+						<a class="btn btn-toolbar" href="@Url.Action("BlogDetail","Home")"> <i class="fas fa-comments"></i>86 Comments </a>
+
+						<a href="#." class="tittle">Bu yüzden Mac gibi başka bir şey yok. </a>
+						<p>Sizi içine çeken ve de hep orada tutan etkileyici bir masaüstü deneyimi. iMac’lerin ardında yatan fikir işte bu. Ve bu fikir, şimdi her zamankinden daha güçlü.</p>
+						<a href="@Url.Action("BlogDetail","Home")">Daha Fazla Oku..</a>
+					</article>
+				</div>
+
+				<!-- Blog Post -->
+				<div class="blog-post">
+					<article>
+						<img class="img-responsive" src="~/Content/images/blog-img-2.jpg" alt=""> <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <a class="btn btn-toolbar" href="@Url.Action("BlogDetail","Home")"> <i class="fas fa-comments"></i>86 Comments </a>
+
+						<a href="#." class="tittle">
+							İşinizi almak için gücü alın sonraki seviye.
+						</a>
+						<p>Yeni iMac, yepyeni işlemcilere, en ileri grafik teknolojilerine, yenilikçi depolama alanlarına ve daha yüksek bant genişliği sunan bağlantılara sahip.  </p>
+						<a href="@Url.Action("BlogDetail","Home")">Daha Fazla Oku..</a>
+					</article>
+				</div>
+
+				<!-- Blog Post -->
+				<div class="blog-post">
+					<article>
+						<img class="img-responsive" src="~/Content/images/blog-img-3.jpg" alt=""> <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <a class="btn btn-toolbar" href="@Url.Action("BlogDetail","Home")"> <i class="fas fa-comments"></i>86 Comments </a> <a href="#." class="tittle">Bu yüzden Mac gibi başka bir şey yok. </a>
+						<p>iMac, ekranınızdaki her görüntüyü görkemli bir hale getiren yeni ve güçlü Radeon Pro 500 serisi grafik işlemcileriyle donatıldı. 27 inç Retina 5K ekranlı iMac, 8 GB’a kadar bağımsız VRAM’e, 21.5 inç Retina 4K ekranlı iMac ise 4 GB’a kadar VRAM’e sahip.</p>
+						<a href="@Url.Action("BlogDetail","Home")">Daha Fazla Oku..</a>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Clients img -->
+	<section class="light-gry-bg clients-img">
+		<div class="container">
+			<ul>
+				<li><img src="~/Content/images/c-img-1.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-2.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-3.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-4.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-5.png" alt=""></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- Newslatter -->
+	<section class="newslatter">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h3>Haber Bültenimize Abone Ol!<span><strong> %25 </strong> İlk İndirimi Kazan !</span></h3>
+				</div>
+				<div class="col-md-6">
+					<form>
+						<input type="email" placeholder="E-mail Adresin...">
+						<button type="submit">Abone Ol!</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+@section scripts{
+	<script>
+
+        function GetirUrunYorum(id)
+        {
+            $.get('@(Url.Action("_UrunYorumGetir", "Home"))', { id: id }, function (result) {
+                $('#modalTitle').html("Ürün Yorum");
+                $('#modalDetail').html(result);
+		   });
+        }
+
+
+	function SepeteEkle(id) {
+		var adet = 1;
+		var type = '@((int)eCommercePro.Models.Enum.EnumHelper.SepetEklemeTip.yeni_ekle)';
+		$.post('@(Url.Action("AddCardProduct", "Product"))', { productId: id, quantity: adet, type: type }, function (result) {
+			GetirUstSepet();
+		});
+	}
+	</script>
+
+}
+
+
+
+
+
+
+
+

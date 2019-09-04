@@ -1,0 +1,125 @@
+﻿
+@{
+	ViewBag.Title = "Login";
+	Layout = "~/Views/Shared/_LCommerce.cshtml";
+	string mesaj = (string)Session["mesaj"];
+}
+
+	<div id="wrap">	
+
+	
+		<!-- Content -->
+		<div id="content">
+
+			<!-- Linking -->
+			<div class="linking">
+				<div class="container">
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li class="active">Authentication</li>
+					</ol>
+				</div>
+			</div>
+
+			<!-- Blog -->
+			<section class="login-sec padding-top-30 padding-bottom-100">
+				<div class="container">
+					<div class="row">
+
+
+						<!-- Don’t have an Account? Register now -->
+						<div class="col-md-6">
+							<h5>Bir hesabın mı var? Giriş yap!</h5>
+
+							<!-- FORM -->
+							<form action="@Url.Action("Login","Account")" , method="post">
+								@Html.AntiForgeryToken()
+								<ul class="row">
+									<li class="col-sm-12">
+										<label>
+											Kullanıcı Adı
+											<input type="text" class="form-control" name="kullaniciAdi" placeholder="">
+										</label>
+									</li>
+
+									<li class="col-sm-12">
+										<label>
+											Şifre
+											<input type="password" class="form-control" name="sifre" placeholder="">
+										</label>
+									</li>
+									<li class="col-sm-12 text-left">
+										<button type="submit" class="btn-round">Giriş</button>
+									</li>
+								</ul>
+							</form>
+						</div>
+
+						<div class="col-md-6">
+							<h5>Hesabınız yok mu? Şimdi üye Olun!</h5>
+
+							<!-- FORM -->
+							<form action="@Url.Action("Register","Account")" , method="post">
+								<label>@(mesaj != null ? mesaj : string.Empty)</label>
+								@Html.AntiForgeryToken()
+								<ul class="row">
+									<li class="col-sm-12">
+										<label>
+											Kullanıcı Adı
+											<input type="text" class="form-control" name="kullaniciadi" placeholder="">
+										</label>
+									</li>
+									<li class="col-sm-12">
+										<label>
+											Şifre
+											<input type="password" class="form-control" name="sifre" placeholder="">
+										</label>
+									</li>
+									<li class="col-sm-12">
+										<label>
+											Şifre Tekrar
+											<input type="password" class="form-control" name="sifretekrar" placeholder="">
+										</label>
+									</li>
+									<li><hr /></li>
+									<li class="col-sm-12">
+										<label>
+											Adı
+											<input type="text" class="form-control" name="adi" placeholder="">
+										</label>
+									</li>
+									<li class="col-sm-12">
+										<label>
+											SoyAdı
+											<input type="text" class="form-control" name="soyadi" placeholder="">
+										</label>
+									</li>
+									<li class="col-sm-12">
+										<label>
+											E-Posta
+											<input type="email" class="form-control" name="eposta" placeholder="">
+										</label>
+									</li>
+									<li class="col-sm-12">
+										<label>
+											Telefon
+											<input type="text" class="form-control" name="telefon" placeholder="">
+										</label>
+									</li>
+									<li class="col-sm-12 text-left">
+										<button type="submit" class="btn-round">Üye Ol</button>
+									</li>
+								</ul>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>		
+			
+		</div>
+
+	
+	
+	</div>
+	
+	

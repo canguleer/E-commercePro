@@ -1,0 +1,91 @@
+﻿@model eCommercePro.Models.DAL.Product
+
+@{
+	ViewBag.Title = "Delete";
+	Layout = "~/Views/Shared/_LPanel.cshtml";
+}
+<div class="container pb-5">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<h4 style="margin-top:130px;">Delete</h4>
+				<hr>
+				<h5>Are you sure you want to delete this?</h5>
+				<div>
+
+					<hr />
+					<dl class="dl-horizontal">
+						<dt>
+							@Html.DisplayNameFor(model => model.productnName)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.productnName)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.Price)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.Price)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.quantity)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.quantity)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.creationDate)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.creationDate)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.status)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.status)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.Brand_Model.id)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.Brand_Model.id)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.Supplier.companyName)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.Supplier.companyName)
+						</dd>
+
+					</dl>
+
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-actions no-color">
+							<input type="submit" value="Delete" class="btn btn-danger" />
+							@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-warning" })
+						</div>
+					}
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+</div>

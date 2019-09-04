@@ -1,0 +1,505 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Seipkon is a Premium Quality Admin Site Responsive Template" />
+	<meta name="keywords" content="admin template, admin, admin dashboard, cms, Seipkon Admin, premium admin templates, responsive admin, panel, software, ui, web app, application" />
+	<meta name="author" content="Themescare">
+	<!-- Title -->
+	<title>@ViewBag.Title - Bootstrap Admin Template</title>
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" sizes="32x32" href="~/PanelContents/assets/img/favicon/favicon-32x32.png">
+	<!-- Animate CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/css/animate.min.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/plugins/bootstrap/bootstrap.min.css">
+	<!-- Font awesome CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/plugins/font-awesome/font-awesome.min.css">
+	<!-- Themify Icon CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/plugins/themify-icons/themify-icons.css">
+	<!-- Perfect Scrollbar CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.css">
+	<!-- Jvector CSS -->
+	@*<link rel="stylesheet" href="~/PanelContents/assets/plugins/jvector/css/jquery-jvectormap.css">*@
+	<!-- Daterange CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/plugins/daterangepicker/css/daterangepicker.css">
+	<!-- Bootstrap-select CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/plugins/bootstrap-select/css/bootstrap-select.min.css">
+	<!-- Summernote CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/plugins/summernote/css/summernote.css">
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/css/seipkon.css">
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" href="~/PanelContents/assets/css/responsive.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+</head>
+<body>
+
+	<!-- Start Page Loading -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+	</div>
+	<!-- End Page Loading -->
+	<!-- Wrapper Start -->
+	<div class="wrapper">
+		<!-- Main Header Start -->
+		<header class="main-header">
+
+			<!-- Logo Start -->
+			<div class="seipkon-logo">
+				<a href="index.html">
+					<img src="~/PanelContents/assets/img/logo.png" alt="logo">
+				</a>
+			</div>
+			<!-- Logo End -->
+			<!-- Header Top Start -->
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="header-top-section">
+						<div class="pull-left">
+
+							<!-- Collapse Menu Btn Start -->
+							<button type="button" id="sidebarCollapse" class=" navbar-btn">
+								<i class="fa fa-bars"></i>
+							</button>
+							<!-- Collapse Menu Btn End -->
+							<!-- Header Top Search Start -->
+							<div class="header-top-search">
+								<form>
+									<input type="search" placeholder="Search...">
+									<button type="submit"><i class="fa fa-search"></i></button>
+								</form>
+							</div>
+							<!-- Header Top Search End -->
+
+						</div>
+						<div class="header-top-right-section pull-right">
+							<ul class="nav nav-pills nav-top navbar-right">
+
+								<!-- Full Screen Btn Start -->
+								<li>
+									<a href="#" id="fullscreen-button">
+										<i class="fa fa-arrows-alt"></i>
+									</a>
+								</li>
+								<!-- Full Screen Btn End -->
+								<!-- Message Toggle Start -->
+								<li class="dropdown">
+									<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+										<i class="fa fa-envelope"></i>
+										<span>5</span>
+									</a>
+									<div class="message-box dropdown-menu animated bounceIn">
+										<div class="message-header">
+											<h4>5 new Message</h4>
+											<a href="#">mark as read</a>
+										</div>
+										<div class="message-body">
+											<ul>
+												<li>
+													<a href="#" class="single-message">
+														<div class="message-img">
+															<img src="~/PanelContents/assets/img/msg-4.png" alt="message" />
+															<span class="online-message"></span>
+														</div>
+														<div class="message-txt">
+															<h4>David Johnson</h4>
+															<p>I like your portfolio, let's start.</p>
+															<span>56 seconds ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-message">
+														<div class="message-img">
+															<img src="~/PanelContents/assets/img/msg-1.png" alt="message" />
+															<span class="busy-message"></span>
+														</div>
+														<div class="message-txt">
+															<h4>Margaret Govan</h4>
+															<p>Can we have call in this week ?</p>
+															<span>14 hourse ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-message">
+														<div class="message-img">
+															<img src="~/PanelContents/assets/img/msg-3.png" alt="message" />
+															<span class="online-message"></span>
+														</div>
+														<div class="message-txt">
+															<h4>Emanual Doe</h4>
+															<p>A National Book Award Finalist An...</p>
+															<span>a day ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-message">
+														<div class="message-img">
+															<img src="~/PanelContents/assets/img/msg-2.png" alt="message" />
+															<span class="away-message"></span>
+														</div>
+														<div class="message-txt">
+															<h4>Eric Alsobrook</h4>
+															<p>A National Book Award Finalist An...</p>
+															<span>2 days ago</span>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="message-footer">
+											<a href="#"><i class="fa fa-angle-down"></i>see all messages</a>
+										</div>
+									</div>
+								</li>
+								<!-- Message Toggle Start -->
+								<!-- Notification Toggle Start -->
+								<li class="dropdown">
+									<a class="dropdown-toggle cart-icon" href="#" data-toggle="dropdown">
+										<i class="fas fa-bell"></i>
+										<span>3</span>
+									</a>
+									<div class="notification-box dropdown-menu animated bounceIn">
+										<div class="notification-header">
+											<h4>3 new notification</h4>
+											<a href="#">clear all</a>
+										</div>
+										<div class="notification-body">
+											<ul>
+												<li>
+													<a href="#" class="single-notification">
+														<div class="notification-img bg_yellow">
+															<i class="fas fa-envelope"></i>
+														</div>
+														<div class="notification-txt">
+															<h4>you have received an email</h4>
+															<span>56 seconds ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-notification">
+														<div class="notification-img bg_green">
+															<i class="fa fa-check"></i>
+														</div>
+														<div class="notification-txt">
+															<h4>Successful transaction of $210</h4>
+															<span>1 minutes ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-notification">
+														<div class="notification-img bg_red">
+															<i class="fa fa-thumbs-up"></i>
+														</div>
+														<div class="notification-txt">
+															<h4>33 pending post for approval</h4>
+															<span>3 minutes ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-notification">
+														<div class="notification-img bg_blue">
+															<i class="fa fa-comments-o"></i>
+														</div>
+														<div class="notification-txt">
+															<h4>2 new comments found</h4>
+															<span>5 minutes ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-notification">
+														<div class="notification-img bg_green">
+															<i class="fa fa-truck "></i>
+														</div>
+														<div class="notification-txt">
+															<h4>order details confirmation</h4>
+															<span>43 seconds ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-notification">
+														<div class="notification-img bg_yellow">
+															<i class="fa fa-envelope"></i>
+														</div>
+														<div class="notification-txt">
+															<h4>you have received an email</h4>
+															<span>56 seconds ago</span>
+														</div>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="single-notification">
+														<div class="notification-img bg_green">
+															<i class="fa fa-check"></i>
+														</div>
+														<div class="notification-txt">
+															<h4>Successful transaction of $210</h4>
+															<span>1 minutes ago</span>
+														</div>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="notification-footer">
+											<a href="#"><i class="fa fa-angle-down"></i>see all notification</a>
+										</div>
+									</div>
+								</li>
+								<!-- Notification Toggle End -->
+								<!-- Profile Toggle Start -->
+								<li class="dropdown">
+									<a class="dropdown-toggle profile-toggle" href="#" data-toggle="dropdown">
+										<img src="~/PanelContents/assets/img/IMG_20170812_144129.jpg" class="profile-avator" alt="admin profile" />
+										<div class="profile-avatar-txt">
+											<p>Can Güler</p>
+											<i class="fa fa-angle-down"></i>
+										</div>
+									</a>
+									<div class="profile-box dropdown-menu animated bounceIn">
+										<ul>
+											<li><a href="@Url.Action("Index","Profile")"><i class="fa fa-user"></i> view profile</a></li>
+											<li><a href="#"><i class="fa fa-pencil-square-o"></i> Edit profile</a></li>
+											<li><a href="#"><i class="fa fa-flash"></i> Activity Log</a></li>
+											<li><a href="#"><i class="fa fa-wrench"></i> Setting</a></li>
+											<li><a href="#"><i class="fa fa-power-off"></i> sign out</a></li>
+										</ul>
+									</div>
+								</li>
+								<!-- Profile Toggle End -->
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- Header Top End -->
+
+		</header>
+		<!-- Main Header End -->
+		<!-- Sidebar Start -->
+		<aside class="seipkon-main-sidebar">
+			<nav id="sidebar">
+				<!-- Sidebar Profile Start -->
+				<div class="sidebar-profile clearfix">
+					<div class="profile-avatar">
+						<img src="~/PanelContents/assets/img/IMG_20170812_144129.jpg" alt="profile" />
+					</div>
+					<div class="profile-info">
+						<h3>Can Güler</h3>
+						<p>Hoşgeldin Admin!</p>
+					</div>
+				</div>
+				<!-- Sidebar Profile End -->
+				<!-- Menu Section Start -->
+				<div class="menu-section">
+					<h3>General</h3>
+					<ul class="list-unstyled components">
+						<li class="active">
+							<a href="index.html">
+								<i class="fas fa-tachometer-alt"></i>
+								Dashboard
+							</a>
+						</li>
+
+
+
+
+
+						<li>
+							<a href="#Categories" data-toggle="collapse" aria-expanded="false">
+								<i class="fas fa-shopping-cart"></i>
+								Kategoriler
+							</a>
+							<ul class="collapse list-unstyled" id="Categories">
+								<li><a href="@Url.Action("Index","Categories")">Kategori Listesi</a></li>
+								<li><a href="@Url.Action("Create","Categories")">Yeni Ekle</a></li>
+							</ul>
+						</li>
+					
+
+						<li>
+							<a href="#product" data-toggle="collapse" aria-expanded="false">
+								<i class="fas fa-file"></i>
+								Ürünler
+							</a>
+							<ul class="collapse list-unstyled" id="product">
+								<li><a href="@Url.Action("Index","Product")">Ürünler Listesi</a></li>
+								<li><a href="@Url.Action("Create","Product")">Yeni Ekle</a></li>
+							</ul>
+						</li>
+
+
+
+						<li>
+							<a href="@Url.Action("Index","testler", new { area = "KULLANICI"})" data-toggle="collapse" aria-expanded="false">
+								<i class="fab fa-bandcamp"></i>
+								Markalar
+							</a>
+
+						</li>
+						<li>
+							<a href="@Url.Action("Index","Models", new { area = "PANEL"})" data-toggle="collapse" aria-expanded="false">
+								<i class="fas fa-mobile-alt"></i>
+								Modeller
+							</a>
+
+						</li>
+						<li>
+							<a href="@Url.Action("Index","Brand_Model", new { area = "PANEL"})" data-toggle="collapse" aria-expanded="false">
+								<i class="fas fa-tags"></i>
+								Marka-Model
+							</a>
+
+						</li>
+						<li>
+							<a href="@Url.Action("Index","Companies", new { area = "PANEL"})" data-toggle="collapse" aria-expanded="false">
+								<i class="fas fa-building"></i>
+								Şirketler
+							</a>
+
+						</li>
+						<li>
+							<a href="@Url.Action("Index","Customers", new { area = "PANEL"})" data-toggle="collapse" aria-expanded="false">
+								<i class="fas fa-male"></i>
+								Müşteriler
+							</a>
+
+						</li>
+						<li>
+							<a href="@Url.Action("Index","Orders", new { area = "PANEL"})" data-toggle="collapse" aria-expanded="false">
+								<i class="fas fa-folder"></i>
+								Siparişler
+							</a>
+
+						</li>
+						
+					</ul>
+				</div>
+				<!-- Menu Section End -->
+				<!-- Menu Section Start -->
+				<div class="menu-section">
+					<h3>Forms,Table & widget</h3>
+					<ul class="list-unstyled components">
+						
+						<li>
+							<a href="#charts" data-toggle="collapse" aria-expanded="false">
+								<i class="fa fa-pie-chart"></i>
+								Charts
+							</a>
+							<ul class="collapse list-unstyled" id="charts">
+								<li><a href="chartsjs.html">chart js</a></li>
+								<li><a href="morrris.html">morris</a></li>
+								<li><a href="sparkline.html">sparkline</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#forms" data-toggle="collapse" aria-expanded="false">
+								<i class="fa fa-edit"></i>
+								Forms
+							</a>
+							<ul class="collapse list-unstyled" id="forms">
+								<li><a href="general-form.html">General Form</a></li>
+								<li><a href="advance-components.html">Advance Components</a></li>
+								<li><a href="form-layouts.html">Form layouts</a></li>
+								<li><a href="form-validation.html">form validation</a></li>
+								<li><a href="form-wizards.html">form wizards</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#table" data-toggle="collapse" aria-expanded="false">
+								<i class="fa fa-table"></i>
+								Tables
+							</a>
+							<ul class="collapse list-unstyled" id="table">
+								<li><a href="basic-table.html">basic table</a></li>
+								<li><a href="advance-table.html">table Advance</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- Menu Section End -->
+				<!-- Menu Section Start -->
+				<div class="menu-section">
+					<h3>Extra components</h3>
+					<ul class="list-unstyled components">
+						
+						<li>
+							<a href="#ex_authentication" data-toggle="collapse" aria-expanded="false">
+								<i class="fa fa-unlock-alt"></i>
+								Authentication
+							</a>
+							<ul class="collapse list-unstyled" id="ex_authentication">
+								<li><a href="@Url.Action("Index","Login")">Login</a></li>
+								<li><a href="@Url.Action("Index","Register")">Register</a></li>							
+							</ul>
+						</li>
+
+						<li>
+							<a href="#ex_error" data-toggle="collapse" aria-expanded="false">
+								<i class="fa fa-exclamation-circle"></i>
+								Error Pages
+							</a>
+							<ul class="collapse list-unstyled" id="ex_error">
+								<li><a href="error-404.html">404 Not Found</a></li>
+							</ul>
+						</li>
+						
+					</ul>
+				</div>
+				<!-- Menu Section End -->
+			</nav>
+		</aside>
+		@RenderBody()
+
+	</div>
+	<!-- End Wrapper -->
+	<!-- jQuery -->
+	
+	<script src="~/PanelContents/assets/js/jquery-3.1.0.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="~/PanelContents/assets/plugins/bootstrap/bootstrap.min.js"></script>
+	<!-- Bootstrap-select JS -->
+	<script src="~/PanelContents/assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+	<!-- Daterange JS -->
+	<script src="~/PanelContents/assets/plugins/daterangepicker/js/moment.min.js"></script>
+	<script src="~/PanelContents/assets/plugins/daterangepicker/js/daterangepicker.js"></script>
+	<!-- Jvector JS -->
+	@*<script src="~/PanelContents/assets/plugins/jvector/js/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="~/PanelContents/assets/plugins/jvector/js/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="~/PanelContents/assets/plugins/jvector/js/jvector-init.js"></script>*@
+	<!-- Raphael JS -->
+	@*<script src="~/PanelContents/assets/plugins/raphael/js/raphael.min.js"></script>*@
+	<!-- Morris JS -->
+	@*<script src="~/PanelContents/assets/plugins/morris/js/morris.min.js"></script>*@
+	<!-- Sparkline JS -->
+	<script src="~/PanelContents/assets/plugins/sparkline/js/jquery.sparkline.js"></script>
+	<!-- Chart JS -->
+	@*<script src="~/PanelContents/assets/plugins/charts/js/Chart.js"></script>*@
+	<!-- Datatables -->
+	<script src="~/PanelContents/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<!-- Perfect Scrollbar JS -->
+	<script src="~/PanelContents/assets/plugins/perfect-scrollbar/jquery-perfect-scrollbar.min.js"></script>
+	<!-- Vue JS -->
+	<script src="~/PanelContents/assets/plugins/vue/vue.min.js"></script>
+	<!-- Summernote JS -->
+	<script src="~/PanelContents/assets/plugins/summernote/js/summernote.js"></script>
+	<script src="~/PanelContents/assets/plugins/summernote/js/custom-summernote.js"></script>
+	<!-- Dashboard JS -->
+	<script src="~/PanelContents/assets/js/dashboard.js"></script>
+	<!-- Custom JS -->
+	<script src="~/PanelContents/assets/js/seipkon.js"></script>
+</body>
+</html>

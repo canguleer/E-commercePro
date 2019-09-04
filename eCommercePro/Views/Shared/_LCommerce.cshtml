@@ -1,0 +1,300 @@
+﻿
+@using eCommercePro.Models.DAL;
+
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="M_Adnan" />
+	<!-- Document Title -->
+	<title>Smart Tech - Ecommerce HTML5 Template</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+
+
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="~/Content/rs-plugin/css/settings.css" media="screen" />
+
+	<!-- StyleSheets -->
+
+	<link href="~/Content/css/ionicons.min.css" rel="stylesheet" />
+	<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="~/Content/css/main.css" rel="stylesheet" />
+	<link href="~/Content/css/style.css" rel="stylesheet" />
+	<link href="~/Content/css/responsive.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+
+	<script src="~/Content/js/vendors/modernizr.js"></script>
+
+</head>
+<body>
+
+	<!-- Page Wrapper -->
+	<div id="wrap" class="layout-1">
+
+		<!-- Top bar -->
+		<div class="top-bar">
+			<div class="container">
+				<p>Dünyanın  En  Büyük  Elektronik  Alışveriş  Sitesine  Hoşgeldiniz!</p>
+				<div class="right-sec">
+					<ul>
+						<li><a href="/Account/Login">Giriş/Kayıt Ol </a></li>
+
+						<li><a href="#.">Mağaza Nerede? </a></li>
+
+					</ul>
+					<div class="social-top">
+
+						<a href="#."><i class="fa fa-facebook"></i></a>
+						<a href="#."><i class="fa fa-twitter"></i></a>
+						<a href="#."><i class="fa fa-linkedin"></i></a>
+						<a href="#."><i class="fa fa-dribbble"></i></a>
+						<a href="#."><i class="fa fa-pinterest"></i></a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header>
+			<div class="container">
+				<div class="logo"> <a href="/Home/Index"><img src="~/Content/images/logo.png" alt=""></a> </div>
+				<div class="search-cate">
+
+					<input type="search" placeholder="Search entire store here...">
+					<button class="submit" type="submit"><i class="icon-magnifier"></i></button>
+				</div>
+
+				<!-- Cart Part -->
+				<ul class="nav navbar-right cart-pop">
+					<li class="dropdown" id="ustSepet">
+
+
+					</li>
+				</ul>
+			</div>
+
+			<!-- Nav -->
+			<nav class="navbar ownmenu">
+				<div class="container">
+
+					<!-- Categories -->
+					<div class="cate-lst">
+						<a data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i>Tüm Kategoriler </a>
+						<div class="cate-bar-in">
+							<div id="cater" class="collapse">
+								@{
+									List<Category> kategoriler = null;
+									IQueryable<Product> urunler = null;
+									ETicaretEntities db = new ETicaretEntities();
+
+									kategoriler = db.Category.Where(e => e.status > 0).ToList();
+									urunler = db.Product;
+
+
+								}
+
+								<ul>
+									@foreach (var item in kategoriler)
+									{
+										int urunAdet = urunler.Where(w => w.Brand_Model.Brand.category_id == item.id).Count();
+										<li>
+											<a link href="@Url.Action("Products","Product",new {id=item.id })"> @item.categoryName (@urunAdet)</a>
+										</li>
+									}
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Navbar Header -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span><i class="fa fa-navicon"></i></span> </button>
+					</div>
+					<!-- NAV -->
+					<div class="collapse navbar-collapse" id="nav-open-btn">
+						<ul class="nav">
+							<li class="dropdown megamenu active">
+								<a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Ana Sayfa </a>
+
+							</li>
+							<li class="dropdown">
+								<a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Sayfalar </a>
+								<ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
+									<li><a href="/Home/About"> Hakkında </a></li>
+									<li><a href="/Account/Login"> Giriş/Kayıt Ol </a></li>
+									<li><a href="/Home/Product4"> Ürünler 4 sütun </a></li>															
+									<li><a href="/Home/Contact"> İletişim </a></li>
+
+								</ul>
+							</li>
+							<!-- Mega Menu Nav -->
+
+							<li class="dropdown">
+								<a href="blog.html" class="dropdown-toggle" data-toggle="dropdown">Yorumlar</a>
+								<ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
+
+									<li>
+										<a href="/Home/Blog">Yorumlar </a>
+									</li>
+
+									<li>
+										<a href="/Home/BlogDetail"> Yorum detay</a>
+									</li>
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+
+					<!-- NAV RIGHT -->
+					<div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Tel:</strong> (212) 613 97 04</span> </div>
+				</div>
+			</nav>
+		</header>
+		@RenderBody()
+		<footer>
+			<div class="container">
+
+				<!-- Footer Upside Links -->
+				@*<div class="foot-link">
+						<ul>
+							<li><a href="#."> About us </a></li>
+							<li><a href="#."> Customer Service </a></li>
+							<li><a href="#."> Privacy Policy </a></li>
+							<li><a href="#."> Site Map </a></li>
+							<li><a href="#."> Search Terms </a></li>
+							<li><a href="#."> Advanced Search </a></li>
+							<li><a href="#."> Orders and Returns </a></li>
+							<li><a href="#."> Contact Us</a></li>
+						</ul>
+					</div>*@
+				<div class="row">
+
+					<!-- Contact -->
+					<div class="col-md-4">
+						<h4>Contact SmartTech!</h4>
+						<p>
+							Address: 45 Grand Central Terminal New York, NY 1017
+							United State USA
+						</p>
+						<p>Phone: (+100) 123 456 7890</p>
+						<p>Email: Support@smarttech.com</p>
+						<div class="social-links"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> <a href="#."><i class="fa fa-instagram"></i></a> <a href="#."><i class="fa fa-google"></i></a> </div>
+					</div>
+
+					<!-- Categories -->
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="links-footer">
+							<li><a href="#.">Home Audio & Theater</a></li>
+							<li><a href="#."> TV & Video</a></li>
+							<li><a href="#."> Camera, Photo & Video</a></li>
+							<li><a href="#."> Cell Phones & Accessories</a></li>
+							<li><a href="#."> Headphones</a></li>
+							<li><a href="#."> Video Games</a></li>
+							<li><a href="#."> Bluetooth & Wireless</a></li>
+						</ul>
+					</div>
+
+					<!-- Categories -->
+					<div class="col-md-3">
+						<h4>Customer Services</h4>
+						<ul class="links-footer">
+							<li><a href="#.">Shipping & Returns</a></li>
+							<li><a href="#."> Secure Shopping</a></li>
+							<li><a href="#."> International Shipping</a></li>
+							<li><a href="#."> Affiliates</a></li>
+							<li><a href="#."> Contact </a></li>
+						</ul>
+					</div>
+
+					<!-- Categories -->
+					<div class="col-md-2">
+						<h4>Information</h4>
+						<ul class="links-footer">
+							<li><a href="#.">Our Blog</a></li>
+							<li><a href="#."> About Our Shop</a></li>
+							<li><a href="#."> Secure Shopping</a></li>
+							<li><a href="#."> Delivery infomation</a></li>
+							<li><a href="#."> Mağaza Nerede?</a></li>
+							<li><a href="#."> FAQs</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Rights -->
+		<div class="rights">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<p>Copyright © 2017 <a href="#." class="ri-li"> SmartTech </a>HTML5 template. All rights reserved</p>
+					</div>
+					<div class="col-sm-6 text-right"> <img src="images/card-icon.png" alt=""> </div>
+				</div>
+			</div>
+		</div>
+
+        <div class="modal fade" id="ModalPopup" tabindex="-1" role="dialog" aria-labelledby="ModalPopupLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>                        
+                    </div>
+                    <div class="modal-body" id="modalDetail">
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                        <button type="button" class="btn btn-primary">Yeni Yorum</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+		<!-- End Footer -->
+		<!-- GO TO TOP  -->
+		<a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>
+		<!-- GO TO TOP End -->
+	</div>
+	<!-- End Page Wrapper -->
+	<!-- JavaScripts -->
+	<script src="~/Content/js/vendors/jquery/jquery.min.js"></script>
+	<script src="~/Content/js/vendors/wow.min.js"></script>
+	<script src="~/Content/js/vendors/bootstrap.min.js"></script>
+	<script src="~/Content/js/vendors/own-menu.js"></script>
+	<script src="~/Content/js/vendors/jquery.sticky.js"></script>
+	<script src="~/Content/js/vendors/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="~/Content/rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript" src="~/Content/rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="~/Content/js/main.js"></script>
+	<script>
+	$(function () {
+		GetirUstSepet();
+	})
+
+	function GetirUstSepet() {
+		$.post('@Url.Action("_UstSepetList", "Home")', function (data) {
+						$('#ustSepet').html(data);
+			        });
+	}
+	</script>
+	@RenderSection("scripts", false)
+</body>
+</html>
+
+

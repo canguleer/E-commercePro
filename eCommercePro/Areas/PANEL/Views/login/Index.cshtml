@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LPanel.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-form-box">
+                <h3>Sign in to Seipkon</h3>
+                <form action="index.html">
+                    <div class="form-group">
+                        <input type="text" placeholder="Email or Username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control" required>
+                    </div>
+                    <div class="form-group form-checkbox">
+                        <input type="checkbox" id="chk_2">
+                        <label class="inline control-label" for="chk_2">Remember me</label>
+                        <p class="lost-pass pull-right">
+                            <a href="#">forget you password?</a>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-layout-submit">
+                                    <button type="submit">Sign in</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,35 @@
+﻿@model eCommercePro.Models.DAL.Brand_Model
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LPanel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Brand_Model</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.brandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.brandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model.modelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model.modelName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

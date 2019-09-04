@@ -1,0 +1,62 @@
+﻿@model IEnumerable<eCommercePro.Models.DAL.Product>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_LPanel.cshtml";
+}
+<div class="container pb-5">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="container margin-right-10"></div>
+
+			
+				<p style="margin-top:100px;  margin-left:30px;">
+					@Html.ActionLink("Yeni Ürün", "Create", null, new { @class = "btn btn-primary" })
+				</p>
+		<hr style=" margin-left:30px;" />
+				<table class="table table-bordered table-striped" style="margin-left:30px;">
+					<tr>
+						<th>Ürün Adı</th>												
+						<th>Ürün Kodu</th>							
+						<th>Seri No</th>													
+						<th>Ekleme Tarihi</th>													
+						<th>Durum</th>													
+						<th>Markası</th>												
+						<th>Firma</th>						
+						<th></th>
+					</tr>
+
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@Html.DisplayFor(modelItem => item.productnName)</td>														
+							<td>@Html.DisplayFor(modelItem => item.quantity)</td>															
+							<td>@Html.DisplayFor(modelItem => item.Price)</td>												
+							<td>@Html.DisplayFor(modelItem => item.creationDate)</td>															
+							<td>@Html.DisplayFor(modelItem => item.status)</td>						
+							<td>@Html.DisplayFor(modelItem => item.Brand_Model.Brand.brandName)</td>
+							
+							
+							<td>@item.Supplier.Select(w => w.companyName).FirstOrDefault()</td>
+
+								
+							
+							<td>
+								@Html.ActionLink("Güncelle", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+								@Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+								<a class="btn btn-warning" href="~/PANEL/ProductDetails/Index/@item.id">Detay İçerik</a>
+								
+							</td>						
+						</tr>
+					}
+
+				</table>
+
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+</div>

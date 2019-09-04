@@ -1,0 +1,76 @@
+﻿@model eCommercePro.Models.DAL.Product
+
+@{
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_LPanel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productnName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productnName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.creationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand_Model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand_Model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier.companyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supplier.companyName)
+        </dd>
+
+    </dl>
+</div>
+<p>	
+	@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+	@Html.ActionLink("Back to List", "Index")
+
+</p>

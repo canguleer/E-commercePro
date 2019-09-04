@@ -1,0 +1,42 @@
+﻿@model List<CartLine>
+
+@{
+	decimal toplamFiyat = 0;
+	if (Model != null)
+	{
+		toplamFiyat = Model.Select(w => w.TotalPrice).Sum();
+	}
+
+}
+
+@using eCommercePro.Models.ViewData
+
+
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	<i class="fas fa-shopping-bag"></i> <strong>Sepetim</strong> <br>
+	<span>@(Model == null ? 0 : Model.Count) ürün - @toplamFiyat.ToString("n") ₺</span>
+
+</a>
+
+
+
+<ul class="dropdown-menu">
+	@foreach (var item in Model)
+	{
+		<li>
+			<div class="media-left"> <a href="#." class="thumb"> <img src="~/Content/product_image/@item.Image" class="img-responsive" alt=""> </a> </div>
+			<div class="media-body">
+				<a href="#." class="tittle">@item.Marka / @item.Model - @item.Urun</a>
+				<span>@item.Price.ToString("n") x @item.Quantity</span>
+			</div>
+		</li>
+	}
+
+	<li class="btn-cart"> <a href="@Url.Action("Shopping_Card", "Product")" class="btn-round">Sepete Git</a> </li>
+</ul>
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+﻿@model eCommercePro.Models.DAL.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LPanel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.orderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.paymentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment.paymentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.productnName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.productnName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shippers.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shippers.CompanyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

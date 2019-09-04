@@ -1,0 +1,1266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ETicaretModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brandName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="logo" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Brand_Model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model_id" Type="int" Nullable="false" />
+          <Property Name="brand_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ETicaret.dbo.company_product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="company_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="supplier_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplier_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="eposta" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="user_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Error_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="notes" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="modelName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Opertaion_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" />
+          <Property Name="notes" Type="varchar" MaxLength="512" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="customer_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="shipper_id" Type="int" Nullable="false" />
+          <Property Name="code" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="payment_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="notes" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="color" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="size" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentType" Type="varchar" MaxLength="512" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productnName" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="Supplier_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Nullable="false" />
+          <Property Name="brand_model_id" Type="int" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="512" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="note" Type="varchar(max)" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="notes" Type="varchar(max)" Nullable="false" />
+          <Property Name="image1" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="image2" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="durum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shippers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="10" />
+          <Property Name="phone" Type="int" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="companyName" Type="varchar" MaxLength="512" />
+          <Property Name="name" Type="varchar" MaxLength="512" />
+          <Property Name="lastName" Type="varchar" MaxLength="512" />
+          <Property Name="title" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="adress" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="fax" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="512" />
+          <Property Name="paymentType" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="DiscountType" Type="varchar" MaxLength="10" />
+          <Property Name="notes" Type="varchar" MaxLength="10" />
+          <Property Name="logo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Brand_Category1">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brand_Model_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Brand_Model" Type="Self.Brand_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Brand_Model">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brand_Model_Model">
+          <End Role="Model" Type="Self.Model" Multiplicity="1" />
+          <End Role="Brand_Model" Type="Self.Brand_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Brand_Model">
+              <PropertyRef Name="model_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_company_product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="company_product" Type="Self.company_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="company_product">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_company_product_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="company_product" Type="Self.company_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="company_product">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="user_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Opertaion_log_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Opertaion_log" Type="Self.Opertaion_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Opertaion_log">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Shippers">
+          <End Role="Shippers" Type="Self.Shippers" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="shipper_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brand_Model">
+          <End Role="Brand_Model" Type="Self.Brand_Model" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand_Model">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="brand_model_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Comments_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product_Comments" Type="Self.Product_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Comments">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Comments_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Product_Comments" Type="Self.Product_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Comments">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ETicaretModelStoreContainer">
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand_Model" EntityType="Self.Brand_Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error_log" EntityType="Self.Error_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Opertaion_log" EntityType="Self.Opertaion_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Comments" EntityType="Self.Product_Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shippers" EntityType="Self.Shippers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="company_product" EntityType="Self.company_product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [company_product].[product_id] AS [product_id], 
+    [company_product].[supplier_id] AS [supplier_id]
+    FROM [dbo].[company_product] AS [company_product]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Brand_Category1" Association="Self.FK_Brand_Category1">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brand_Model_Brand" Association="Self.FK_Brand_Model_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Brand_Model" EntitySet="Brand_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brand_Model_Model" Association="Self.FK_Brand_Model_Model">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Brand_Model" EntitySet="Brand_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_company_product_Product" Association="Self.FK_company_product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="company_product" EntitySet="company_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_company_product_Supplier" Association="Self.FK_company_product_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="company_product" EntitySet="company_product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="Self.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Opertaion_log_Customer" Association="Self.FK_Opertaion_log_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Opertaion_log" EntitySet="Opertaion_log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Payment" Association="Self.FK_Order_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Shippers" Association="Self.FK_Order_Shippers">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand_Model" Association="Self.FK_Product_Brand_Model">
+            <End Role="Brand_Model" EntitySet="Brand_Model" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Comments_Product" Association="Self.FK_Product_Comments_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product_Comments" EntitySet="Product_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Comments_User" Association="Self.FK_Product_Comments_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Product_Comments" EntitySet="Product_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product" Association="Self.FK_ProductDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ETicaretModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ETicaretEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brand" EntityType="ETicaretModel.Brand" />
+          <EntitySet Name="Brand_Model" EntityType="ETicaretModel.Brand_Model" />
+          <EntitySet Name="Category" EntityType="ETicaretModel.Category" />
+          <EntitySet Name="Customer" EntityType="ETicaretModel.Customer" />
+          <EntitySet Name="Error_log" EntityType="ETicaretModel.Error_log" />
+          <EntitySet Name="Model" EntityType="ETicaretModel.Model" />
+          <EntitySet Name="Opertaion_log" EntityType="ETicaretModel.Opertaion_log" />
+          <EntitySet Name="Order" EntityType="ETicaretModel.Order" />
+          <EntitySet Name="OrderDetail" EntityType="ETicaretModel.OrderDetail" />
+          <EntitySet Name="Payment" EntityType="ETicaretModel.Payment" />
+          <EntitySet Name="Product" EntityType="ETicaretModel.Product" />
+          <EntitySet Name="Product_Comments" EntityType="ETicaretModel.Product_Comments" />
+          <EntitySet Name="ProductDetail" EntityType="ETicaretModel.ProductDetail" />
+          <EntitySet Name="Role" EntityType="ETicaretModel.Role" />
+          <EntitySet Name="Shippers" EntityType="ETicaretModel.Shippers" />
+          <EntitySet Name="Supplier" EntityType="ETicaretModel.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="ETicaretModel.sysdiagrams" />
+          <EntitySet Name="User" EntityType="ETicaretModel.User" />
+          <AssociationSet Name="FK_Brand_Category1" Association="ETicaretModel.FK_Brand_Category1">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brand_Model_Brand" Association="ETicaretModel.FK_Brand_Model_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Brand_Model" EntitySet="Brand_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brand_Model_Model" Association="ETicaretModel.FK_Brand_Model_Model">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Brand_Model" EntitySet="Brand_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand_Model" Association="ETicaretModel.FK_Product_Brand_Model">
+            <End Role="Brand_Model" EntitySet="Brand_Model" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="ETicaretModel.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Opertaion_log_Customer" Association="ETicaretModel.FK_Opertaion_log_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Opertaion_log" EntitySet="Opertaion_log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="ETicaretModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Payment" Association="ETicaretModel.FK_Order_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product" Association="ETicaretModel.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Shippers" Association="ETicaretModel.FK_Order_Shippers">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="ETicaretModel.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Comments_Product" Association="ETicaretModel.FK_Product_Comments_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product_Comments" EntitySet="Product_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product" Association="ETicaretModel.FK_ProductDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Comments_User" Association="ETicaretModel.FK_Product_Comments_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Product_Comments" EntitySet="Product_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="ETicaretModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="company_product" Association="ETicaretModel.company_product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brandName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="logo" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="ETicaretModel.FK_Brand_Category1" FromRole="Brand" ToRole="Category" />
+          <NavigationProperty Name="Brand_Model" Relationship="ETicaretModel.FK_Brand_Model_Brand" FromRole="Brand" ToRole="Brand_Model" />
+        </EntityType>
+        <EntityType Name="Brand_Model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model_id" Type="Int32" Nullable="false" />
+          <Property Name="brand_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="ETicaretModel.FK_Brand_Model_Brand" FromRole="Brand_Model" ToRole="Brand" />
+          <NavigationProperty Name="Model" Relationship="ETicaretModel.FK_Brand_Model_Model" FromRole="Brand_Model" ToRole="Model" />
+          <NavigationProperty Name="Product" Relationship="ETicaretModel.FK_Product_Brand_Model" FromRole="Brand_Model" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="ETicaretModel.FK_Brand_Category1" FromRole="Category" ToRole="Brand" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="eposta" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="user_Id" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="ETicaretModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
+          <NavigationProperty Name="Opertaion_log" Relationship="ETicaretModel.FK_Opertaion_log_Customer" FromRole="Customer" ToRole="Opertaion_log" />
+          <NavigationProperty Name="Order" Relationship="ETicaretModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Error_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="modelName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand_Model" Relationship="ETicaretModel.FK_Brand_Model_Model" FromRole="Model" ToRole="Brand_Model" />
+        </EntityType>
+        <EntityType Name="Opertaion_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="customer_id" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="ETicaretModel.FK_Opertaion_log_Customer" FromRole="Opertaion_log" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="shipper_id" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="ETicaretModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="Payment" Relationship="ETicaretModel.FK_Order_Payment" FromRole="Order" ToRole="Payment" />
+          <NavigationProperty Name="Product" Relationship="ETicaretModel.FK_Order_Product" FromRole="Order" ToRole="Product" />
+          <NavigationProperty Name="Shippers" Relationship="ETicaretModel.FK_Order_Shippers" FromRole="Order" ToRole="Shippers" />
+          <NavigationProperty Name="OrderDetail" Relationship="ETicaretModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="ETicaretModel.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentType" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="ETicaretModel.FK_Order_Payment" FromRole="Payment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productnName" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Supplier_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="brand_model_id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brand_Model" Relationship="ETicaretModel.FK_Product_Brand_Model" FromRole="Product" ToRole="Brand_Model" />
+          <NavigationProperty Name="Order" Relationship="ETicaretModel.FK_Order_Product" FromRole="Product" ToRole="Order" />
+          <NavigationProperty Name="Product_Comments" Relationship="ETicaretModel.FK_Product_Comments_Product" FromRole="Product" ToRole="Product_Comments" />
+          <NavigationProperty Name="ProductDetail" Relationship="ETicaretModel.FK_ProductDetail_Product" FromRole="Product" ToRole="ProductDetail" />
+          <NavigationProperty Name="Supplier" Relationship="ETicaretModel.company_product" FromRole="Product" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Product_Comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="ETicaretModel.FK_Product_Comments_Product" FromRole="Product_Comments" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="ETicaretModel.FK_Product_Comments_User" FromRole="Product_Comments" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="image1" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="image2" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="durum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="ETicaretModel.FK_ProductDetail_Product" FromRole="ProductDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role1" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="ETicaretModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Shippers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="ETicaretModel.FK_Order_Shippers" FromRole="Shippers" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="companyName" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="adress" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="Int32" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="paymentType" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="ETicaretModel.company_product" FromRole="Supplier" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="ETicaretModel.FK_Customer_User" FromRole="User" ToRole="Customer" />
+          <NavigationProperty Name="Product_Comments" Relationship="ETicaretModel.FK_Product_Comments_User" FromRole="User" ToRole="Product_Comments" />
+          <NavigationProperty Name="Role" Relationship="ETicaretModel.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Brand_Category1">
+          <End Type="ETicaretModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="ETicaretModel.Brand" Role="Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brand_Model_Brand">
+          <End Type="ETicaretModel.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="ETicaretModel.Brand_Model" Role="Brand_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Brand_Model">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brand_Model_Model">
+          <End Type="ETicaretModel.Model" Role="Model" Multiplicity="1" />
+          <End Type="ETicaretModel.Brand_Model" Role="Brand_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Brand_Model">
+              <PropertyRef Name="model_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brand_Model">
+          <End Type="ETicaretModel.Brand_Model" Role="Brand_Model" Multiplicity="1" />
+          <End Type="ETicaretModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand_Model">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="brand_model_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Type="ETicaretModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ETicaretModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="user_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Opertaion_log_Customer">
+          <End Type="ETicaretModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="ETicaretModel.Opertaion_log" Role="Opertaion_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Opertaion_log">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Type="ETicaretModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ETicaretModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Payment">
+          <End Type="ETicaretModel.Payment" Role="Payment" Multiplicity="1" />
+          <End Type="ETicaretModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Product">
+          <End Type="ETicaretModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ETicaretModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Shippers">
+          <End Type="ETicaretModel.Shippers" Role="Shippers" Multiplicity="1" />
+          <End Type="ETicaretModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="shipper_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Type="ETicaretModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="ETicaretModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Comments_Product">
+          <End Type="ETicaretModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ETicaretModel.Product_Comments" Role="Product_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Comments">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product">
+          <End Type="ETicaretModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ETicaretModel.ProductDetail" Role="ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Comments_User">
+          <End Type="ETicaretModel.User" Role="User" Multiplicity="1" />
+          <End Type="ETicaretModel.Product_Comments" Role="Product_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product_Comments">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="ETicaretModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="ETicaretModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="company_product">
+          <End Type="ETicaretModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="ETicaretModel.Supplier" Role="Supplier" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ETicaretModelStoreContainer" CdmEntityContainer="ETicaretEntities">
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="ETicaretModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="brandName" ColumnName="brandName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brand_Model">
+            <EntityTypeMapping TypeName="ETicaretModel.Brand_Model">
+              <MappingFragment StoreEntitySet="Brand_Model">
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+                <ScalarProperty Name="model_id" ColumnName="model_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="ETicaretModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="ETicaretModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="eposta" ColumnName="eposta" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Error_log">
+            <EntityTypeMapping TypeName="ETicaretModel.Error_log">
+              <MappingFragment StoreEntitySet="Error_log">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Model">
+            <EntityTypeMapping TypeName="ETicaretModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="modelName" ColumnName="modelName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opertaion_log">
+            <EntityTypeMapping TypeName="ETicaretModel.Opertaion_log">
+              <MappingFragment StoreEntitySet="Opertaion_log">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="ETicaretModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="shipper_id" ColumnName="shipper_id" />
+                <ScalarProperty Name="orderName" ColumnName="orderName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="ETicaretModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="ETicaretModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="ETicaretModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="brand_model_id" ColumnName="brand_model_id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="Supplier_id" ColumnName="Supplier_id" />
+                <ScalarProperty Name="productnName" ColumnName="productnName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Comments">
+            <EntityTypeMapping TypeName="ETicaretModel.Product_Comments">
+              <MappingFragment StoreEntitySet="Product_Comments">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductDetail">
+            <EntityTypeMapping TypeName="ETicaretModel.ProductDetail">
+              <MappingFragment StoreEntitySet="ProductDetail">
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="image2" ColumnName="image2" />
+                <ScalarProperty Name="image1" ColumnName="image1" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="ETicaretModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="role1" ColumnName="role" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shippers">
+            <EntityTypeMapping TypeName="ETicaretModel.Shippers">
+              <MappingFragment StoreEntitySet="Shippers">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="ETicaretModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ETicaretModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ETicaretModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="company_product" TypeName="ETicaretModel.company_product" StoreEntitySet="company_product">
+            <EndProperty Name="Supplier">
+              <ScalarProperty Name="id" ColumnName="supplier_id" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="id" ColumnName="product_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

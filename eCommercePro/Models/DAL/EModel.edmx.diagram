@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c8a222433f24af69748eba481b79b5c" Name="Diagram1">
+        <EntityTypeShape EntityType="ETicaretModel.Brand" Width="1.5" PointX="3" PointY="7.75" />
+        <EntityTypeShape EntityType="ETicaretModel.Brand_Model" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="ETicaretModel.Category" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="ETicaretModel.Customer" Width="1.5" PointX="7.5" PointY="14.625" />
+        <EntityTypeShape EntityType="ETicaretModel.Error_log" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ETicaretModel.Model" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="ETicaretModel.Opertaion_log" Width="1.5" PointX="9.75" PointY="22" />
+        <EntityTypeShape EntityType="ETicaretModel.Order" Width="1.5" PointX="9.75" PointY="9.25" />
+        <EntityTypeShape EntityType="ETicaretModel.OrderDetail" Width="1.5" PointX="12" PointY="11.625" />
+        <EntityTypeShape EntityType="ETicaretModel.Payment" Width="1.5" PointX="7.5" PointY="18.25" />
+        <EntityTypeShape EntityType="ETicaretModel.Product" Width="1.5" PointX="7.5" PointY="7.25" />
+        <EntityTypeShape EntityType="ETicaretModel.Product_Comments" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ETicaretModel.ProductDetail" Width="1.5" PointX="9.75" PointY="5.5" />
+        <EntityTypeShape EntityType="ETicaretModel.Role" Width="1.5" PointX="8.25" PointY="2.125" />
+        <EntityTypeShape EntityType="ETicaretModel.Shippers" Width="1.5" PointX="7.5" PointY="12" />
+        <EntityTypeShape EntityType="ETicaretModel.Supplier" Width="1.5" PointX="9.75" PointY="16.75" />
+        <EntityTypeShape EntityType="ETicaretModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ETicaretModel.User" Width="1.5" PointX="10.5" PointY="1.75" />
+        <AssociationConnector Association="ETicaretModel.FK_Brand_Category1" />
+        <AssociationConnector Association="ETicaretModel.FK_Brand_Model_Brand" />
+        <AssociationConnector Association="ETicaretModel.FK_Brand_Model_Model" />
+        <AssociationConnector Association="ETicaretModel.FK_Product_Brand_Model" />
+        <AssociationConnector Association="ETicaretModel.FK_Customer_User" />
+        <AssociationConnector Association="ETicaretModel.FK_Opertaion_log_Customer" />
+        <AssociationConnector Association="ETicaretModel.FK_Order_Customer" />
+        <AssociationConnector Association="ETicaretModel.FK_Order_Payment" />
+        <AssociationConnector Association="ETicaretModel.FK_Order_Product" />
+        <AssociationConnector Association="ETicaretModel.FK_Order_Shippers" />
+        <AssociationConnector Association="ETicaretModel.FK_OrderDetail_Order" />
+        <AssociationConnector Association="ETicaretModel.FK_Product_Comments_Product" />
+        <AssociationConnector Association="ETicaretModel.FK_ProductDetail_Product" />
+        <AssociationConnector Association="ETicaretModel.FK_Product_Comments_User" />
+        <AssociationConnector Association="ETicaretModel.FK_User_Role" />
+        <AssociationConnector Association="ETicaretModel.company_product" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

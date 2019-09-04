@@ -1,0 +1,64 @@
+﻿@model eCommercePro.Models.DAL.Category
+
+@{
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/_LPanel.cshtml";
+}
+<div class="container pb-5">
+
+
+	@using (Html.BeginForm())
+	{
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-3"> </div>
+				<div class="col-md-6">
+
+					@Html.AntiForgeryToken()
+
+					<div class="form-horizontal">
+						<h4 style="margin-top:130px;">Category</h4>
+						<hr />
+						@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+						@Html.HiddenFor(model => model.id)
+
+						<div class="form-group">
+							@Html.LabelFor(model => model.categoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+							<div class="col-md-10">
+								@Html.EditorFor(model => model.categoryName, new { htmlAttributes = new { @class = "form-control" } })
+								@Html.ValidationMessageFor(model => model.categoryName, "", new { @class = "text-danger" })
+							</div>
+						</div>
+
+						<div class="form-group">
+							@Html.LabelFor(model => model.code, htmlAttributes: new { @class = "control-label col-md-2" })
+							<div class="col-md-10">
+								@Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control" } })
+								@Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
+							</div>
+						</div>
+
+						<div class="form-group">
+							@Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+							<div class="col-md-10">
+								@Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+								@Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-offset-2 col-md-10">
+								<input type="submit" value="Güncelle" class="btn btn-success" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+	}
+
+	<div style="padding-left:200px; padding-top:50px; ">
+		@Html.ActionLink("Kategori Liste", "Index", null, new { @class = "btn btn-warning" })
+	</div>
+</div>

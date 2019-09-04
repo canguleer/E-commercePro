@@ -1,0 +1,273 @@
+﻿@model List<Product>
+@{
+	ViewBag.Title = "Products";
+	Layout = "~/Views/Shared/_LCommerce.cshtml";
+	var categories = (List<Category>)ViewBag.Categories;
+	string kategoriAdi = Model.Select(e => e.Brand_Model.Brand.Category.categoryName).FirstOrDefault();
+	var brands = (List<Brand>)ViewBag.Brands;
+	var models = (List<Model>)ViewBag.Models;
+	IQueryable<Product> urunler = null;
+	ETicaretEntities7 db = new ETicaretEntities7();
+	urunler = db.Product;
+	int brandIndex = 0;
+	int categoryIndex = 0;
+	int modelIndex = 0;
+}
+
+
+@using eCommercePro.Models.DAL;
+
+
+<!-- Linking -->
+<div class="linking">
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li class="active">@kategoriAdi</li>
+		</ol>
+	</div>
+</div>
+
+<!-- Content -->
+<div id="content">
+
+	<!-- Products -->
+	<section class="padding-top-40 padding-bottom-60">
+		<div class="container">
+			<div class="row">
+
+				<!-- Shop Side Bar -->
+				<div class="col-md-3">
+					<div class="shop-side-bar">
+
+						<!-- Categories -->
+						<h6>Categories</h6>
+						<div class="checkbox checkbox-primary">
+							<ul>
+
+								@foreach (var item in categories)
+								{
+									categoryIndex++;
+									int urunAdet = urunler.Where(w => w.Brand_Model.Brand.category_id == item.id).Count();
+									<li>
+										<input id="cate@(categoryIndex)" class="styled" type="checkbox">
+										<label for="cate@(categoryIndex)"><a link href="@Url.Action("Products","Product",new {id=item.id })"> @item.categoryName (@urunAdet)</a></label>
+									</li>
+								}
+							</ul>
+
+						</div>
+
+
+						<!-- Categories -->
+						<h6>Fiyat Aralığı</h6>
+						<!-- PRICE -->
+						<div class="cost-price-content">
+							<div id="price-range" class="price-range"></div>
+							<span id="price-min" class="price-min">20</span> <span id="price-max" class="price-max">80</span> <a href="#." class="btn-round">Filter</a>
+						</div>
+
+						<!-- Featured Brands -->
+
+						<h6>Markalar</h6>
+						<div class="checkbox checkbox-primary">
+
+							<ul>
+								@foreach (var item in brands)
+								{
+									brandIndex++;
+									<li>
+										<input id="brand@(brandIndex)" class="styled" type="checkbox">
+										<label for="brand@(brandIndex)"> @item.brandName <span>(@item.Brand_Model.Count())</span> </label>
+									</li>
+								}
+
+							</ul>
+						</div>
+
+						<!-- Rating -->
+						<!-- Colors -->
+						<!-- Colors -->
+
+						<h6>Modeller</h6>
+						<div class="checkbox checkbox-primary">
+							<ul>
+								@foreach (var item in models)
+								{
+									modelIndex++;
+									<li>
+										<input id="model@(modelIndex)" class="styled" type="checkbox">
+										<label for="model@(modelIndex)">@item.modelName <span>(@item.Brand_Model.Count())</span></label>
+									</li>
+
+
+								}
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Products -->
+				<div class="col-md-9">
+
+					<!-- Short List -->
+					<div class="short-lst">
+						<h2>@kategoriAdi </h2>
+						<ul>
+							<!-- Short List -->
+							<li>
+								<p>Gösterilen 1–10 arası<strong> @Model.Count</strong> Ürün mevcuttur</p>
+							</li>
+							<!-- Short  -->
+							<li>
+								<select class="selectpicker">
+									<option>12 li Göster </option>
+									<option>24 li Göster </option>
+									<option>36 li Göster </option>
+								</select>
+							</li>
+							<!-- by Default -->
+							<li>
+								<select class="selectpicker">
+									<option>Varsayılana Göre Sırala </option>
+									<option>Varsayılana Göre Sırala </option>
+									<option>Varsayılana Göre Sırala</option>
+								</select>
+							</li>
+
+							<!-- Grid Layer -->
+							<li class="grid-layer"> <a href="#."><i class="fa fa-list margin-right-10"></i></a> <a href="#."><i class="fa fa-th"></i></a> </li>
+						</ul>
+					</div>
+
+					<!-- Items -->
+					<div class="col-list">
+						<!-- Product -->
+
+						@foreach (var item in Model)
+						{
+							<div class="product">
+								<article>
+									<!-- Product img -->
+									<div class="media-left">
+										<div class="item-img"> <img class="img-responsive" src="~/Content/product_image/@item.image" alt="">  </div>
+									</div>
+									<!-- Content -->
+									<div class="media-body">
+										<div class="row">
+											<!-- Content Left -->
+											<div class="col-sm-7">
+												<span class="tag">@item.Brand_Model.Brand.brandName</span> <a href="@Url.Action("Product_Detail","Product", new { id =item.id})" class="@item.Brand_Model.Model.modelName">@item.productnName</a>
+												<!-- Reviews -->
+												<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
+												<ul class="bullet-round-list">
+													<li>@item.ProductDetail.Select(w => w.notes).FirstOrDefault()</li>
+												</ul>
+											</div>
+											<!-- Content Right -->-
+											<div class="col-sm-5 text-center">
+												<a href="#." class="heart"><i class="fa fa-heart"></i></a> <a href="#." class="heart navi"><i class="fa fa-navicon"></i></a>
+												<div class="position-center-center">
+													<div class="price">@item.Price.ToString("n") ₺</div>
+													<p>Stok <span class="in-stock">@item.status</span></p>
+
+													<button type="button" name="ekleSepet" class="btn btn-primary" value="@item.id">
+														<i class="fa fa-cart-plus" aria-hidden="true"></i>
+														Sepete Ekle
+													</button>
+
+													<a href="@Url.Action("Product_Detail","Product", new { id =item.id})"><input type="button" value="Ürün Detay" class="btn btn-success" /> </a>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						}
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Your Recently Viewed Items -->
+	<section class="padding-bottom-60">
+		<div class="container">
+
+			<!-- heading -->
+			<div class="heading">
+				<h2>Son Görüntülenen Ürünler</h2>
+				<hr>
+			</div>
+			<!-- Items Slider -->
+			<div class="item-slide-5 with-nav">
+				<!-- Product -->
+				<div class="product">
+					<article>
+						<img class="img-responsive" src="~/Content/images/item-img-1-1.jpg" alt="">
+						<!-- Content -->
+						<span class="tag">Latop</span> <a href="/Product/Product_Detail" class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
+						<!-- Reviews -->
+						<p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+						<div class="price">$350.00 </div>
+						<a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>
+					</article>
+				</div>
+				<!-- Product -->
+
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Clients img -->
+	<section class="light-gry-bg clients-img">
+		<div class="container">
+			<ul>
+				<li><img src="~/Content/images/c-img-1.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-2.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-3.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-4.png" alt=""></li>
+				<li><img src="~/Content/images/c-img-5.png" alt=""></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- Newslatter -->
+	<section class="newslatter">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h3>Subscribe our Newsletter <span>Get <strong>25% Off</strong> first purchase!</span></h3>
+				</div>
+				<div class="col-md-6">
+					<form>
+						<input type="email" placeholder="Your email address here...">
+						<button type="submit">Subscribe!</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- End Content -->
+@section scripts{
+	<script>	
+
+		$('button[name="ekleSepet"]').on('click', function () { debugger
+			var adet = 1;
+			var id = $(this).val();
+			$.post('@(Url.Action("AddCardProduct", "Product"))', { productId: id, quantity: adet }, function (result) {
+				window.location.href = '@Url.Action("Shopping_Card", "Product")';
+			});
+		});
+
+	</script>
+
+}
+
+
